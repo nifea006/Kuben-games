@@ -51,7 +51,8 @@ const hitboxWidth = 66
 const hitboxHeight = 55
 const hitboxOffsetX = 18
 const hitboxOffsetY = 20;
-const hitboxCornerCut = 120;
+const hitboxCornerCutTop = 30;
+const hitboxCornerCutBottom = 15;
 const asteroidHitboxInset = 6;
 const reloadDuration = 700;
 const DEBUG_HITBOXES = {
@@ -243,6 +244,46 @@ function getAsteroidHitbox(asteroid) {
         left: asteroid.x + inset,
         right: asteroid.x + asteroid.width - inset
     };
+}
+
+function polyIntersectsPoly(polyA, polyB) {
+    for (let i = 0; i < polyA.length; i++) {
+        const a1 = polyA[i];
+        const a2 = polyA[(i + 1) % polyA.length];
+        for (let j = 0; j < polyB.length; j++) {
+            const b1 = polyB[j];
+            const b2 = polyB[(j + 1) % polyB.length];
+            if (segmentsIntersect(a1, a2, b1, b2)) return true;
+        }
+    }
+    if (pointInPoly(polyA[0], polyB)) return true;
+    if (pointInPoly(polyB[0], polyA)) return true;
+    return false;
+}
+
+function getAsteroidHitboxPolygon(asteroid) {
+    const inset = Math.min(asteroidHitboxInset, asteroid.width / 2 - 1, asteroid.height / 2 - 1);
+    const w = asteroid.width - inset * 2;
+    const h = asteroid.height - inset * 2;
+    const cx = asteroid.x + asteroid.width / 2;
+    const cy = asteroid.y + asteroid.height / 2;
+    const halfW = w / 2;
+    const halfH = h / 2;
+    const angle = (asteroid.rotation * Math.PI) / 180;
+    const cosA = Math.cos(angle);
+    const sinA = Math.sin(angle);
+
+    const corners = [
+        { x: -halfW, y: -halfH },
+        { x: halfW, y: -halfH },
+        { x: halfW, y: halfH },
+        { x: -halfW, y: halfH }
+    ];
+
+    return corners.map(p => ({
+        x: cx + p.x * cosA - p.y * sinA,
+        y: cy + p.x * sinA + p.y * cosA
+    }));
 }
 
 function getDifficulty() {
@@ -551,21 +592,24 @@ function updateGame() {
         return;
     }
 
-    // Get spaceship hitbox (top corners chamfered)
+    // Get spaceship hitbox (top & bottom corners chamfered)
     function getSpaceshipHitboxPolygon() {
         const left = spaceship.x + hitboxOffsetX;
         const right = left + hitboxWidth;
         const top = spaceship.y + hitboxOffsetY;
         const bottom = top + hitboxHeight;
-        const cut = Math.min(hitboxCornerCut, hitboxWidth / 2 - 1, hitboxHeight / 2 - 1);
+        const cutTop = Math.min(hitboxCornerCutTop, hitboxWidth / 2 - 1, hitboxHeight / 2 - 1);
+        const cutBottom = Math.min(hitboxCornerCutBottom, hitboxWidth / 2 - 1, hitboxHeight / 2 - 1);
 
         return [
-            { x: left + cut, y: top },
-            { x: right - cut, y: top },
-            { x: right, y: top + cut },
-            { x: right, y: bottom },
-            { x: left, y: bottom },
-            { x: left, y: top + cut }
+            { x: left + cutTop, y: top },
+            { x: right - cutTop, y: top },
+            { x: right, y: top + cutTop },
+            { x: right, y: bottom - cutBottom },
+            { x: right - cutBottom, y: bottom },
+            { x: left + cutBottom, y: bottom },
+            { x: left, y: bottom - cutBottom },
+            { x: left, y: top + cutTop }
         ];
     }
 
@@ -573,7 +617,7 @@ function updateGame() {
     if (DEBUG_HITBOXES.spaceship) {
         const shipHitboxPoly = getSpaceshipHitboxPolygon();
         ctx.save();
-        ctx.strokeStyle = 'rgba(0, 255, 255, 0.9)';
+        ctx.strokeStyle = 'aquamarine';
         ctx.lineWidth = 2;
         ctx.beginPath();
         ctx.moveTo(shipHitboxPoly[0].x, shipHitboxPoly[0].y);
@@ -615,9 +659,9 @@ function updateGame() {
                 right: laser.x + laser.width
             };
 
-            const asteroidRect = getAsteroidHitbox(asteroid);
+            const asteroidPoly = getAsteroidHitboxPolygon(asteroid);
 
-            if (isColliding(laserRect, asteroidRect)) {
+            if (rectIntersectsPoly(laserRect, asteroidPoly)) {
                 dealtDamage = 1;
                 if (asteroid.HP > dealtDamage) {
                     asteroid.HP -= dealtDamage;
@@ -729,25 +773,26 @@ function updateGame() {
         ctx.restore();
 
         // Check for collisions with the spaceship
-        const asteroidRect = getAsteroidHitbox(asteroid);
+        const asteroidPoly = getAsteroidHitboxPolygon(asteroid);
 
         // Draw asteroid hitbox
         if (DEBUG_HITBOXES.asteroid) {
             ctx.save();
-            ctx.strokeStyle = 'rgba(255, 180, 0, 0.9)';
+            ctx.strokeStyle = 'orange';
             ctx.lineWidth = 2;
-            ctx.strokeRect(
-                asteroidRect.left,
-                asteroidRect.top,
-                asteroidRect.right - asteroidRect.left,
-                asteroidRect.bottom - asteroidRect.top
-            );
+            ctx.beginPath();
+            ctx.moveTo(asteroidPoly[0].x, asteroidPoly[0].y);
+            for (let p = 1; p < asteroidPoly.length; p++) {
+                ctx.lineTo(asteroidPoly[p].x, asteroidPoly[p].y);
+            }
+            ctx.closePath();
+            ctx.stroke();
             ctx.restore();
         }
 
         const shipHitboxPoly = getSpaceshipHitboxPolygon();
 
-        if (rectIntersectsPoly(asteroidRect, shipHitboxPoly)) {
+        if (polyIntersectsPoly(asteroidPoly, shipHitboxPoly)) {
             if (!spaceship.invincible) {
                 let asteroidDamage;
                 if (asteroid.width >= 50) {
@@ -809,7 +854,7 @@ function updateGame() {
             if (DEBUG_HITBOXES.redSpaceship) {
                 const redSpaceshipRect = getRedSpaceshipHitbox(redSpaceship);
                 ctx.save();
-                ctx.strokeStyle = 'rgba(255, 0, 0, 0.9)';
+                ctx.strokeStyle = 'red';
                 ctx.lineWidth = 2;
                 ctx.strokeRect(
                     redSpaceshipRect.left,

@@ -1,8 +1,16 @@
 let generatedOTP = "";
 
-const EMAILJS_PUBLIC_KEY = window.EMAILJS_CONFIG.PUBLIC_KEY;
-const EMAILJS_SERVICE_ID = window.EMAILJS_CONFIG.SERVICE_ID;
-const EMAILJS_TEMPLATE_ID = window.EMAILJS_CONFIG.TEMPLATE_ID;
+const emailConfig = window.EMAILJS_CONFIG || null;
+const hasEmailConfig = !!(
+    emailConfig &&
+    emailConfig.PUBLIC_KEY &&
+    emailConfig.SERVICE_ID &&
+    emailConfig.TEMPLATE_ID
+);
+
+const EMAILJS_PUBLIC_KEY = emailConfig ? emailConfig.PUBLIC_KEY : null;
+const EMAILJS_SERVICE_ID = emailConfig ? emailConfig.SERVICE_ID : null;
+const EMAILJS_TEMPLATE_ID = emailConfig ? emailConfig.TEMPLATE_ID : null;
 
 document.addEventListener('DOMContentLoaded', () => {
     const nicknameOverlay = document.getElementById('nicknameOverlay');
@@ -21,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Load user data from localStorage
     const getUserData = () => {
-        return JSON.parse(localStorage.getItem('userData')) || { nickname: 'Player123', email: 'example@domain.com' };
+        return JSON.parse(localStorage.getItem('userData')) || { nickname: 'Player123', email: '' };
     };
 
     // Save updated user data to localStorage
@@ -61,6 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Mask email for security
     const maskEmail = (email) => {
+        if (!email) return '(Guest)';
         return email.replace(/(.{3}).+(.{2}@.+)/, '$1***$2');
     };
 
@@ -68,7 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const renderPlayerInfo = () => {
         const userData = getUserData();
         document.getElementById('nicknameDisplay').textContent = userData.nickname;
-        if (userData.email && userData.email.endsWith('_temp_')) {
+        if (!userData.email || userData.email.endsWith('_temp_')) {
             document.getElementById('emailDisplay').textContent = '(Guest)';
         } else {
             document.getElementById('emailDisplay').textContent = maskEmail(userData.email);
@@ -201,6 +210,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Change Email
     document.getElementById('changeEmailButton').addEventListener('click', () => {
+        if (!hasEmailConfig) {
+            alert('Email login is unavailable (missing config).');
+            return;
+        }
         emailOverlay.classList.remove('hidden');
     });
 
@@ -212,11 +225,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     // Initialize EmailJS
-    emailjs.init(EMAILJS_PUBLIC_KEY); // Use your public key
+    if (hasEmailConfig) {
+        emailjs.init(EMAILJS_PUBLIC_KEY); // Use your public key
+    }
 
     // Send OTP on email form submit (player info)
     document.getElementById('sendOtpButton').addEventListener('click', function(event) {
         event.preventDefault();
+        if (!hasEmailConfig) {
+            alert('Email login is unavailable (missing config).');
+            return;
+        }
         const email = document.getElementById('newEmail').value.trim();
         if (!email) {
             alert('Please enter a valid email.');
@@ -229,6 +248,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Function to send the OTP using EmailJS (player info)
     function sendOtp(email) {
+        if (!hasEmailConfig) {
+            alert('Email login is unavailable (missing config).');
+            return;
+        }
         if (!email || !email.includes("@")) {
             alert("Please enter a valid email address.");
             return;
@@ -249,6 +272,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // Verify OTP (player info)
     document.getElementById('verifyOtpButton').addEventListener('click', function(event) {
         event.preventDefault();
+        if (!hasEmailConfig) {
+            alert('Email login is unavailable (missing config).');
+            return;
+        }
         const enteredOtp = document.getElementById('otp').value;
         if (enteredOtp === generatedOTP) {
             alert('One-time password verified successfully!');
