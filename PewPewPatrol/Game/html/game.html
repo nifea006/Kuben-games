@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pew Pew Patrol</title>
+    <link rel="stylesheet" href="../styles/game_style.css">
+</head>
+
+<body>
+    <div id="gameContainer">
+        <canvas id="gameCanvas"></canvas>
+
+        <!-- Health and Score UI -->
+        <div id="uiTopLeft">
+            <span id="healthText">Health: 100</span>
+        </div>
+
+        <!-- Score UI -->
+        <div id="scoreText">
+            Score: 0
+        </div>
+
+        <!-- Pause Screen -->
+        <div id="pauseScreen" class="overlayScreen hidden">
+            <div class="screenBox">
+                <h2>Paused</h2>
+                <button id="resumeButton" class="menuButton">
+                    <span class="icon">▶️</span> Resume
+                </button>
+                <button id="restartButtonPause" class="menuButton">
+                    <span class="icon">🔄</span> Restart
+                </button>
+                <a href="../../index.html">
+                    <button id="mainMenuButtonPause" class="menuButton">
+                        <span class="icon">🏠</span> Main Menu
+                    </button>
+                </a>
+            </div>
+        </div>
+
+        <!-- Game Over Screen -->
+        <div id="gameOverScreen" class="overlayScreen hidden">
+            <div class="screenBox">
+                <h2>Game Over</h2>
+                <p id="finalScoreText">Final Score: 0</p>
+                <button id="restartButtonGameOver" class="menuButton">
+                    <span class="icon">🔄</span> Restart
+                </button>
+                <a href="../../index.html">
+                    <button id="mainMenuButtonGameOver" class="menuButton">
+                        <span class="icon">🏠</span> Main Menu
+                    </button>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script src="../javascript/game.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,196 @@
+/* ====== General Styles ====== */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #000;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.settings-container {
+    background-color: #333;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    animation: fadeIn 0.8s ease;
+    width: max-content;
+    max-width: 600px;
+    text-align: center;
+}
+
+.setting-item {
+    margin: 10px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.setting-item label {
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+.setting-item button {
+    background-color: #555;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.setting-item button:hover {
+    background-color: #666;
+    transform: scale(1.05);
+}
+
+.setting-item button:active {
+    background-color: #444;
+    transform: scale(0.95);
+}
+
+/* ====== Animations ====== */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* ====== Controls ====== */
+.controls-title {
+    font-size: 17px;
+}
+
+.controls-item {
+    margin: 10px 0;
+}
+
+.controls-button {
+    background-color: #555;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    min-width: 100px;
+    text-align: center;
+}
+
+.controls-button:hover {
+    background-color: #666;
+    transform: scale(1.05);
+}
+
+.controls-button:active {
+    background-color: #444;
+    transform: scale(0.95);
+}
+
+.button-holder {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+/* ====== Navigation Buttons ====== */
+.navigation {
+    background-color: #444;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 15px 30px;
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    min-width: 210px;
+    text-align: center;
+}
+
+.navigation:hover {
+    background-color: #555;
+    transform: scale(1.1);
+}
+
+.navigation:active {
+    background-color: #333;
+    transform: scale(0.95);
+}
+
+/* ====== Volume and Difficulty Styles ====== */
+#masterVolume,
+#musicVolume,
+#effectsVolume {
+    appearance: none;
+    width: 100%;
+    max-width: 300px;
+    height: 8px;
+    background: #555;
+    border-radius: 5px;
+    outline: none;
+    transition: background 0.3s ease;
+    cursor: pointer;
+}
+
+#masterVolume::-webkit-slider-thumb,
+#musicVolume::-webkit-slider-thumb,
+#effectsVolume::-webkit-slider-thumb {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    background-color: #999;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+#masterVolume::-webkit-slider-thumb:hover,
+#musicVolume::-webkit-slider-thumb:hover,
+#effectsVolume::-webkit-slider-thumb:hover {
+    background-color: #bbb;
+    transform: scale(1.1);
+}
+
+#difficulty {
+    width: 100%;
+    max-width: 300px;
+    background-color: #555;
+    color: #fff;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: border-color 0.3s ease, transform 0.2s ease;
+}
+
+#difficulty:hover {
+    background-color: #666;
+    transform: scale(1.05);
+}
+
+#difficulty:active {
+    background-color: #444;
+    transform: scale(0.95);
+}
+
+#difficulty option[value="easy"] { color: #7CFC00; }
+#difficulty option[value="medium"] { color: #00BFFF; }
+#difficulty option[value="hard"] { color: #FFA500; }
+#difficulty option[value="very hard"] { color: #FF6347; }
+#difficulty option[value="insane"] { color: #FF1493; }
+#difficulty option[value="impossible"] { color: #8B0000; }

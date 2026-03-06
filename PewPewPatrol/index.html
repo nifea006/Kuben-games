@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pew Pew Patrol</title>
+    <link rel="stylesheet" href="Menu/styles/menu_style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+</head>
+
+<body>
+    <div id="menuFlexCenter">
+        <div id="menuContainer">
+            <h1 class="menuTitle">Pew Pew Patrol</h1>
+
+            <!-- Start Game Button -->
+            <a href="Game/html/game.html">
+                <button class="menuButton" id="startGame">
+                    <span class="icon">🎮</span> Start Game
+                </button>
+            </a>
+
+            <!-- Leaderboard Button -->
+            <a href="Menu/html/leaderboard.html">
+                <button class="menuButton" id="leaderboard">
+                    <span class="icon">🏆</span> Leaderboard
+                </button>
+            </a>
+
+            <!-- Player Info Button -->
+            <a href="Menu/html/player_info.html">
+                <button class="menuButton" id="playerInfo">
+                    <span class="icon">👤</span> Player Info
+                </button>
+            </a>
+
+            <!-- Settings Button -->
+            <a href="Menu/html/settings.html">
+                <button class="menuButton" id="settings">
+                    <span class="icon">⚙️</span> Settings
+                </button>
+            </a>
+
+            <!-- Exit Button -->
+            <a href="/index.html">
+                <button class="menuButton" id="exit">
+                    <span class="icon">❌</span> Exit
+                </button>
+            </a>
+        </div>
+    </div>
+
+    <!-- Login Overlay -->
+    <div id="loginOverlay" class="overlayScreen hidden">
+        <div class="screenBox">
+            <span id="closeOverlayButton">✖</span>
+            <h2>Login</h2>
+            <form id="loginForm">
+                <label for="email">Email:</label>
+                <input type="email" id="email" required>
+                <input type="submit" id="sendOtpButton" value="Send a one-time password">
+            </form>
+
+            <form id="otpForm" class="hidden">
+                <label for="otp">Enter the one-time password:</label>
+                <input type="text" id="otp" required>
+                <input type="submit" id="verifyOtpButton" value="Verify the one-time password">
+            </form>
+        </div>
+    </div>
+
+    <!-- Nickname Overlay -->
+    <div id="nicknameOverlay" class="overlayScreen hidden">
+        <div class="screenBox">
+            <h2>Choose a Nickname</h2>
+            <form id="nicknameForm">
+                <label for="nickname">Nickname:</label>
+                <input type="text" id="nickname" required>
+                <input type="submit" id="saveNicknameButton" value="Save Nickname">
+            </form>
+        </div>
+    </div>
+
+
+    <script src="static/js/config.js"></script>
+    <script src="Menu/javascript/menu_script.js"></script>
+</body>
+
+</html>

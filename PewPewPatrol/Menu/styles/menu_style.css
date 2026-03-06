@@ -1,0 +1,174 @@
+/* Body Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #000;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Menu Container */
+#menuContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #333;
+    padding: 30px;
+    animation: fadeIn 0.8s ease;
+    min-width: max-content;
+    text-align: center;
+    border-radius: 10px;
+}
+
+/* Menu Title */
+.menuTitle {
+    color: #00ffea;
+    animation: slideIn 0.8s ease;
+}
+
+/* Buttons */
+button {
+    padding: 10px 20px;
+    background-color: #555;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    min-width: 200px;
+    margin-bottom: 25px;
+}
+
+button:hover {
+    background-color: #777;
+    transform: scale(1.05);
+}
+
+button:active {
+    background-color: #444;
+    transform: scale(0.95);
+}
+
+/* Links */
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #00ffea;
+}
+
+/* Login Overlay Styles */
+#loginOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 105;
+    animation: fadeIn 0.5s ease;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Nickname Overlay Styles */
+#nicknameOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 101;
+    animation: fadeIn 0.5s ease;
+}
+
+/* Shared Overlay Box Styles */
+.overlayScreen .screenBox {
+    position: relative;
+    background-color: #333;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    width: 90%;
+    max-width: 400px;
+    animation: slideIn 0.5s ease;
+}
+
+.overlayScreen input {
+    width: 85%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #555;
+    border-radius: 5px;
+    background-color: #222;
+    color: #fff;
+    font-size: 14px;
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5);
+    transition: border-color 0.3s ease;
+}
+
+.overlayScreen label {
+    font-size: 20px;
+    color: #fff;
+    display: block;
+    margin-bottom: 5px;
+}
+
+/* Close Overlay Button */
+#closeOverlayButton {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 20px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+#closeOverlayButton:hover {
+    color: #ff4444;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}

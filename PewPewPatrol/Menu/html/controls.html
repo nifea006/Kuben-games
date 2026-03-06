@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Controls Settings</title>
+    <link rel="stylesheet" href="../styles/settings_style.css">
+</head>
+
+<body>
+    <div id="settingsFlexCenter">
+        <div class="settings-container">
+            <h1>Controls Settings</h1>
+
+            <label for="moveLeft" class="controls-title">Move Left:</label>
+            <div id="moveLeft" class="controls-item button-holder">
+                <button class="controls-button control1">KeyA</button>
+                <button class="controls-button control2">ArrowLeft</button>
+            </div>
+
+            <label for="moveRight" class="controls-title">Move Right:</label>
+            <div id="moveRight" class="controls-item button-holder">
+                <button class="controls-button control1">KeyD</button>
+                <button class="controls-button control2">ArrowRight</button>
+            </div>
+
+            <label for="shoot" class="controls-title">Shoot:</label>
+            <div id="shoot" class="controls-item button-holder">
+                <button class="controls-button control1">Space</button>
+                <button class="controls-button control2">MouseClick</button>
+            </div>
+
+            <br>
+
+            <input type="checkbox" id="hideControlsUI">Hide controls tips</input>
+
+            <br>
+            <br>
+
+            <div class="setting-item">
+                <button id="saveControls" class="navigation">
+                    <span class="icon">💾</span> Save Controls
+                </button>
+            </div>
+
+            <div class="setting-item">
+                <button id="defaultControls" class="navigation">
+                    <span class="icon">🔄</span> Default
+                </button>
+            </div>
+
+            <div class="setting-item">
+                <a href="./settings.html">
+                    <button id="backToSettings" class="navigation">
+                        <span class="icon">⬅️</span> Back to Settings
+                    </button>
+                </a>
+            </div>
+
+        </div>
+    </div>
+    <script src="../javascript/controls_script.js"></script>
+</body>
+
+</html>

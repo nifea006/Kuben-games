@@ -1,0 +1,239 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #000;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+#playerInfoContainer {
+    background-color: #333;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    width: 90%;
+    max-width: 500px;
+}
+
+.title {
+    color: #00ffea;
+    margin-bottom: 20px;
+}
+
+.infoSection {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.infoSection label {
+    font-size: 18px;
+    font-weight: bold;
+    color: #00ffea;
+}
+
+.infoSection span {
+    display: inline-block;
+    margin-left: 10px;
+    font-size: 16px;
+    color: #fff;
+    padding-right: 10px;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #555;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-bottom: 20px;
+}
+
+button:hover {
+    background-color: #777;
+    transform: scale(1.05);
+}
+
+button:active {
+    background-color: #444;
+    transform: scale(0.95);
+}
+
+#logoutButton {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    background-color: #ff4444;
+}
+
+/* Overlay Styles */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.overlay.hidden {
+    display: none;
+}
+
+.overlayContent {
+    position: relative;
+    background-color: #333;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    width: 90%;
+    max-width: 400px;
+}
+
+.overlayContent input {
+    width: 90%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #555;
+    border-radius: 5px;
+    background-color: #222;
+    color: #fff;
+    font-size: 14px;
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5);
+    transition: border-color 0.3s ease;
+}
+
+.overlayContent input:focus {
+    border-color: #00ffea;
+    outline: none;
+}
+
+.closeOverlayButton {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 20px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.closeOverlayButton:hover {
+    color: #ff4444;
+}
+
+.overlay label {
+    font-size: 18px;
+    color: #fff;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Player live leaderboard */
+#playerLiveLeaderboard {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* Style each leaderboard row */
+#playerLiveLeaderboard li {
+    background-color: #444;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* First place */
+#playerLiveLeaderboard li.first-place-bg {
+    background-color: yellow !important;
+}
+
+#playerLiveLeaderboard .nickname-flex {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Trophy icon style */
+#playerLiveLeaderboard .trophy {
+    background-color: #0044ff;
+    padding: 3px;
+    border-radius: 5px;
+    font-size: 1.2em;
+    vertical-align: middle;
+}
+
+/* Nickname base style */
+#playerLiveLeaderboard .nickname {
+    font-weight: normal;
+    color: #fff;
+    text-shadow: none;
+}
+
+/* First place nickname */
+#playerLiveLeaderboard li.first-place-bg .nickname {
+    color: #222;
+    font-weight: bold;
+}
+
+/* First place points */
+#playerLiveLeaderboard li.first-place-bg .points {
+    color: #222;
+    font-weight: bold;
+}
+
+/* Logged-in user nickname */
+#playerLiveLeaderboard .logged-in {
+    color: #00ffff;
+    font-weight: bold;
+}
+
+/* Points */
+#playerLiveLeaderboard .points {
+    color: #fff;
+    font-weight: normal;
+}
+
+/* Difficulty Dropdown */
+.difficulty-dropdown {
+    padding: 6px 12px;
+    border-radius: 6px;
+    border: 1px solid #aaa;
+    background: #222;
+    color: #fff;
+    font-size: 1rem;
+    margin-bottom: 10px;
+    margin-left: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    transition: border-color 0.2s;
+}
+
+.difficulty-dropdown:focus {
+    border-color: #4caf50;
+    outline: none;
+}

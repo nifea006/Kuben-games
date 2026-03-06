@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaderboard</title>
+    <link rel="stylesheet" href="../styles/menu_style.css">
+    <link rel="stylesheet" href="../styles/leaderboard_style.css">
+</head>
+
+<body>
+
+    <div id="menuContainer">
+        <h1 class="menuTitle">Leaderboard</h1>
+
+        <!-- Difficulty Dropdown for Leaderboard -->
+        <div class="difficulty-dropdown-container">
+            <label for="difficultyDropdown">Difficulty:</label>
+            <select id="difficultyDropdown" class="difficulty-dropdown">
+                <option value="medium">Medium</option>
+                <option value="easy">Easy</option>
+                <option value="hard">Hard</option>
+                <option value="very hard">Very Hard</option>
+                <option value="insane">Insane</option>
+                <option value="impossible">Impossible</option>
+            </select>
+        </div>
+
+        <ul id="leaderboardList">
+            <li id="firstPlaceTemplate" class="first-place-bg" style="display:none;">
+                <span class="nickname nickname-flex">
+                    <span class="trophy">🏆</span>
+                    <span id="firstPlaceNickname"></span>
+                </span>
+                <span class="points" id="firstPlacePoints"></span>
+            </li>
+        </ul>
+
+        <a href="../../index.html">
+            <button class="menuButton">
+                <span class="icon">⬅️</span> Back to Menu
+            </button>
+        </a>
+    </div>
+
+    <script src="../javascript/leaderboard_script.js"></script>
+</body>
+
+</html>

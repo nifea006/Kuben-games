@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings - Pew Pew Patrol</title>
+    <link rel="stylesheet" href="../styles/settings_style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
+</head>
+
+<body>
+    <div id="settingsFlexCenter">
+        <div class="settings-container">
+            <!-- Master Volume -->
+            <div class="setting-item">
+                <label for="masterVolume">
+                    Master Volume: <span id="masterVolumeValue">50</span>
+                </label>
+                <input type="range" id="masterVolume" name="masterVolume" min="0" max="100" value="50">
+            </div>
+
+            <!-- Music Volume -->
+            <div class="setting-item">
+                <label for="musicVolume">
+                    Music: <span id="musicVolumeValue">50</span>
+                </label>
+                <input type="range" id="musicVolume" name="musicVolume" min="0" max="100" value="50">
+            </div>
+
+            <!-- Effects Volume -->
+            <div class="setting-item">
+                <label for="effectsVolume">
+                    Effects: <span id="effectsVolumeValue">50</span>
+                </label>
+                <input type="range" id="effectsVolume" name="effectsVolume" min="0" max="100" value="50">
+            </div>
+
+            <br>
+
+            <!-- Difficulty -->
+            <div class="setting-item">
+                <label for="difficulty">Difficulty:</label>
+                <select id="difficulty" name="difficulty">
+                    <option value="easy">Easy</option>
+                    <option value="medium" selected>Medium</option>
+                    <option value="hard">Hard</option>
+                    <option value="very hard">Very Hard</option>
+                    <option value="insane">Insane</option>
+                    <option value="impossible">Impossible</option>
+                </select>
+            </div>
+
+            <br>
+
+            <!-- Controls Settings Button -->
+            <div class="setting-item">
+                <label for="controlsSettings">Controls:</label>
+                <button id="controlsSettings" class="navigation">
+                    <span class="icon">🎮</span> Controls Settings
+                </button>
+            </div>
+
+            <br>
+
+            <!-- Save Settings Button -->
+            <div class="setting-item">
+                <button id="saveSettings" class="navigation">
+                    <span class="icon">💾</span> Save Settings
+                </button>
+            </div>
+
+            <!-- Default Settings Button -->
+            <div class="setting-item">
+                <button id="defaultSettings" class="navigation">
+                    <span class="icon">🔄</span> Default
+                </button>
+            </div>
+
+            <!-- Back to Menu Button -->
+            <div class="setting-item">
+                <button id="backToMenu" class="navigation">
+                    <span class="icon">⬅️</span> Back to Menu
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../javascript/settings_script.js"></script>
+</body>
+
+</html>

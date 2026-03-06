@@ -1,0 +1,112 @@
+#leaderboardList {
+    list-style: none;
+    margin: 20px 0;
+    padding: 0;
+    text-align: left;
+    font-size: 18px;
+}
+
+#leaderboardList li {
+    background-color: #444;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    transition: transform 0.2s ease, background-color 0.3s ease;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Highlight first place */
+#leaderboardList li.first-place-bg {
+    background-color: yellow !important;
+}
+
+/* Flex for nickname + trophy */
+#leaderboardList .nickname-flex {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Trophy icon style */
+#leaderboardList .trophy {
+    background-color: #0044ff;
+    padding: 3px;
+    border-radius: 5px;
+    margin-right: 0;
+    font-size: 1.2em;
+    vertical-align: middle;
+    display: flex;
+    align-items: center;
+}
+
+/* Nickname base style */
+#leaderboardList .nickname {
+    font-weight: normal;
+    color: #fff;
+    text-shadow: none;
+    transition: color 0.3s, text-shadow 0.3s;
+}
+
+/* First place nickname */
+#leaderboardList li.first-place-bg .nickname {
+    color: #222;
+    font-weight: bold;
+}
+
+#leaderboardList li.first-place-bg .points {
+    color: #222;
+    font-weight: bold;
+}
+
+/* Logged-in user nickname */
+#leaderboardList .logged-in {
+    color: #00ffff;
+    font-weight: bold;
+}
+
+/* Points */
+#leaderboardList .points {
+    display: flex;
+    align-items: center;
+    color: #fff;
+    font-weight: normal;
+    text-shadow: none;
+}
+
+#leaderboardList li.first-place-bg .nickname.logged-in,
+#playerLiveLeaderboard li.first-place-bg .nickname.logged-in {
+    color: #0044ff !important;
+    font-weight: bold;
+}
+
+/* Difficulty dropdown styles */
+.difficulty-dropdown-container {
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+}
+
+.difficulty-dropdown-container label {
+    margin-right: 8px;
+    font-weight: bold;
+    color: #fff;
+}
+
+.difficulty-dropdown {
+    padding: 6px 12px;
+    border-radius: 6px;
+    border: 1px solid #aaa;
+    background: #222;
+    color: #fff;
+    font-size: 1rem;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    transition: border-color 0.2s;
+}
+
+.difficulty-dropdown:focus {
+    border-color: #4caf50;
+    outline: none;
+}
