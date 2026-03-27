@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Chicken Road</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="nav-bar">
+        <div class="nav-brand">
+            <span class="dot" aria-hidden="true"></span>
+            <span>Chicken Road</span>
+        </div>
+        <nav class="nav-links" aria-label="Primary">
+            <a href="#">Play</a>
+            <a href="#">Skins</a>
+        </nav>
+        <div class="balance balance-display" aria-live="polite">Balance: $0</div>
+        <div class="GPSVIEW-balance-display"></div>
+    </header>
+
+    <main class="container">
+        <div class="hud">
+            <div class="hud-left">
+                <span class="dot online"></span>
+                Online: 33,386
+            </div>
+            <div class="hud-mid">
+                <span class="win-icon">&#9733;</span>
+                <span id="status-text">Latest win: +$0.00</span>
+            </div>
+            <div class="hud-right">
+                <div class="balance balance-display" aria-live="polite">Balance: $0</div>
+                <div class="badge" id="step-display" aria-live="polite">Steps: 0</div>
+
+            </div>
+        </div>
+
+        <div class="game-area wide-road">
+            <div class="column coin-col" style="left: 12%;">
+                <span class="multiplier">1x</span>
+            </div>
+            <div class="column green-col" style="left: 32%;">
+                <span class="multiplier">1.2x</span>
+            </div>
+            <div class="column purple-col" style="left: 52%;">
+                <span class="multiplier">1.5x</span>
+            </div>
+            <div class="column purple-col" style="left: 72%;">
+                <span class="multiplier">1.8x</span>
+            </div>
+            <div class="column egg-col" style="left: 88%;">
+                <div class="egg"></div>
+                <span class="multiplier">2x</span>
+            </div>
+
+            <div class="chicken" id="chicken" role="button" aria-label="Chicken"></div>
+        </div>
+
+        <div class="control-bar">
+            <div class="range">
+                <span class="label">Difficulty</span>
+                <div class="pills">
+                    <span class="pill active" data-difficulty="Easy">Easy</span>
+                    <span class="pill" data-difficulty="Medium">Medium</span>
+                    <span class="pill" data-difficulty="Hard">Hard</span>
+                    <span class="pill" data-difficulty="Hardcore">Hardcore</span>
+                    </span>
+                </div>
+            </div>
+            <div class="actions">
+                <button class="cashout-btn" id="cashout-btn">Cash Out</button>
+                <button class="add-btn" id="add-btn">Deposit $50</button>
+                <button class="go-btn" id="go-btn">GO</button>
+                <div class="auto-cashout-group">
+                    <button class="auto-cashout-btn" id="auto-cashout-btn">
+                        <span class="icon">&#9888;</span>
+                        Auto Cashout Off
+                    </button>
+                    <div class="auto-cashout-presets" id="auto-cashout-presets" aria-label="Auto cashout presets">
+                        <button class="auto-chip active" data-threshold="1000">1k</button>
+                        <button class="auto-chip" data-threshold="3000">3k</button>
+                        <button class="auto-chip" data-threshold="5000">5k</button>
+                        <button class="auto-chip" data-threshold="10000">10k</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
