@@ -25,9 +25,11 @@ body {
   margin: 0;
   font-family: "Source Serif 4", serif;
   color: var(--cream);
-  background: radial-gradient(circle at top, rgba(60, 24, 78, 0.6), transparent 50%),
-    radial-gradient(circle at 20% 20%, rgba(20, 90, 80, 0.4), transparent 55%),
-    linear-gradient(135deg, var(--bg-1), var(--bg-2));
+  background:
+    radial-gradient(circle at 15% 10%, rgba(207, 60, 60, 0.35), transparent 55%),
+    radial-gradient(circle at 85% 20%, rgba(43, 182, 115, 0.3), transparent 60%),
+    radial-gradient(circle at 50% 80%, rgba(26, 26, 26, 0.65), transparent 65%),
+    linear-gradient(135deg, #0a0f0c, #130b0b);
   min-height: 100vh;
 }
 
@@ -224,12 +226,31 @@ h1 {
   width: 100%;
   height: 100%;
   border-radius: 50%;
-  border: 10px solid rgba(245, 239, 230, 0.2);
+  border: 10px solid rgba(212, 167, 79, 0.9);
   box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.6), 0 20px 40px rgba(0, 0, 0, 0.5);
   transition: transform 4.6s cubic-bezier(0.15, 0.8, 0.2, 1);
-  background: conic-gradient(var(--green) 0deg 9deg, var(--red) 9deg 18deg);
+  background: var(--wheel-gradient, conic-gradient(var(--green) -5deg 5deg, var(--red) 5deg 10deg));
   overflow: hidden;
   z-index: 1;
+}
+
+.wheel::before {
+  content: "";
+  position: absolute;
+  inset: 14%;
+  border-radius: 50%;
+  box-shadow: inset 0 0 12px rgba(0, 0, 0, 0.45);
+  border: 6px solid rgba(245, 239, 230, 0.25);
+}
+
+.wheel::after {
+  content: "";
+  position: absolute;
+  inset: 32%;
+  border-radius: 50%;
+  background: rgb(24, 24, 24);
+  border: 2px solid rgba(212, 167, 79, 0.9);
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.6);
 }
 
 .wheel .slot-label {
@@ -244,6 +265,7 @@ h1 {
   text-align: center;
   line-height: 1;
   pointer-events: none;
+  z-index: 2;
 }
 
 .pointer {

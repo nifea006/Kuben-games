@@ -85,22 +85,23 @@ function getColorHex(color) {
 
 function buildWheel() {
   const step = 360 / wheelNumbers.length;
+  const angleOffset = -step / 8;
   const gradientParts = wheelNumbers.map((num, index) => {
     const color = getColor(num);
-    const start = index * step;
-    const end = (index + 1) * step;
+    const start = index * step + angleOffset;
+    const end = (index + 1) * step + angleOffset;
     return `${getColorHex(color)} ${start}deg ${end}deg`;
   });
-  wheel.style.background = `conic-gradient(${gradientParts.join(",")})`;
+  wheel.style.setProperty("--wheel-gradient", `conic-gradient(${gradientParts.join(",")})`);
   wheel.innerHTML = "";
 
-  const radius = wheel.clientWidth / 2 - 18;
+  const radius = wheel.clientWidth / 2 - 34;
   wheelNumbers.forEach((num, index) => {
     const label = document.createElement("div");
     label.className = "slot-label";
     label.textContent = num;
-    const angle = index * step + step / 2;
-    label.style.transform = `rotate(${angle}deg) translateY(-${radius}px) rotate(${-angle}deg)`;
+    const angle = index * step + angleOffset + step / 2;
+    label.style.transform = `translate(-50%, -50%) rotate(${angle}deg) translateY(-${radius}px) rotate(0deg)`;
     wheel.appendChild(label);
   });
 }
@@ -245,9 +246,11 @@ function spinWheel() {
   const winIndex = Math.floor(Math.random() * wheelNumbers.length);
   const winNumber = wheelNumbers[winIndex];
   const step = 360 / wheelNumbers.length;
+  const angleOffset = -step / 2;
   const offset = (Math.random() - 0.5) * step * 0.6;
   const extraSpins = 5 + Math.floor(Math.random() * 3);
-  currentRotation += extraSpins * 360 - (winIndex * step + step / 2) + offset;
+  const targetAngle = winIndex * step + angleOffset + step / 2;
+  currentRotation += extraSpins * 360 - targetAngle + offset;
   wheel.style.transform = `rotate(${currentRotation}deg)`;
   setResult("Spinning...");
 
