@@ -1,0 +1,212 @@
+@import url("https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=Noto+Serif+SC:wght@400;600&display=swap");
+
+:root {
+  --ink: #120709;
+  --crimson: #7a0b14;
+  --crimson-deep: #4d0710;
+  --gold: #d4a450;
+  --jade: #1f7a5f;
+  --cream: #f5e9d0;
+  --shadow: 0 20px 40px rgba(0, 0, 0, 0.45);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Noto Serif SC", serif;
+  color: var(--cream);
+  background: radial-gradient(circle at top, rgba(212, 164, 80, 0.2), transparent 55%),
+    radial-gradient(circle at 20% 20%, rgba(122, 11, 20, 0.45), transparent 60%),
+    linear-gradient(135deg, var(--crimson-deep), var(--ink));
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: repeating-radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.05) 0 2px, transparent 2px 12px);
+  opacity: 0.3;
+  pointer-events: none;
+  z-index: 0;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(120deg, rgba(212, 164, 80, 0.05), transparent 40%),
+    linear-gradient(-120deg, rgba(31, 122, 95, 0.08), transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.lantern {
+  position: fixed;
+  top: 40px;
+  width: 120px;
+  height: 180px;
+  background: radial-gradient(circle at 50% 30%, rgba(255, 255, 255, 0.45), transparent 40%),
+    linear-gradient(180deg, #b31b25, #7a0b14);
+  border-radius: 60px;
+  box-shadow: 0 20px 60px rgba(179, 27, 37, 0.45);
+  border: 2px solid rgba(255, 255, 255, 0.15);
+  z-index: 1;
+}
+
+.lantern::before {
+  content: "";
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px;
+  height: 18px;
+  background: var(--gold);
+  border-radius: 8px;
+  box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.3);
+}
+
+.lantern::after {
+  content: "";
+  position: absolute;
+  bottom: -18px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 22px;
+  height: 24px;
+  background: var(--gold);
+  border-radius: 6px;
+}
+
+.lantern-left {
+  left: 6vw;
+}
+
+.lantern-right {
+  right: 6vw;
+}
+
+.top-bar,
+.menu,
+.footer {
+  position: relative;
+  z-index: 2;
+}
+
+.top-bar {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  padding: 50px 8vw 30px;
+}
+
+.seal {
+  width: 72px;
+  height: 72px;
+  border-radius: 16px;
+  background: linear-gradient(145deg, #b51f2c, #6c0d16);
+  border: 2px solid rgba(255, 255, 255, 0.15);
+  display: grid;
+  place-items: center;
+  font-family: "Ma Shan Zheng", cursive;
+  font-size: 2.4rem;
+  color: var(--cream);
+  box-shadow: var(--shadow);
+}
+
+.title-block h1 {
+  margin: 0;
+  font-family: "Ma Shan Zheng", cursive;
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  letter-spacing: 0.08em;
+}
+
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  font-size: 0.7rem;
+  margin: 0 0 6px;
+  color: rgba(245, 233, 208, 0.7);
+}
+
+.subtitle {
+  margin: 6px 0 0;
+  color: rgba(245, 233, 208, 0.75);
+}
+
+.menu {
+  padding: 0 8vw 60px;
+  display: grid;
+  gap: 24px;
+}
+
+.intro {
+  font-size: 1.1rem;
+  max-width: 520px;
+  color: rgba(245, 233, 208, 0.85);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 18px;
+}
+
+.game-card {
+  background: linear-gradient(135deg, rgba(122, 11, 20, 0.85), rgba(18, 7, 9, 0.95));
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 18px;
+  padding: 20px;
+  text-decoration: none;
+  color: var(--cream);
+  box-shadow: var(--shadow);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.game-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at top, rgba(212, 164, 80, 0.25), transparent 60%);
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.game-card h2 {
+  margin: 0 0 6px;
+  font-size: 1.3rem;
+}
+
+.game-card p {
+  margin: 0;
+  color: rgba(245, 233, 208, 0.7);
+}
+
+.game-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--gold);
+}
+
+.footer {
+  padding: 20px 8vw 40px;
+  color: rgba(245, 233, 208, 0.65);
+}
+
+@media (max-width: 720px) {
+  .top-bar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .lantern {
+    display: none;
+  }
+}

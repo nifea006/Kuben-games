@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kuben Arcade | Flappy Bird</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="wrap">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Kuben Arcade</p>
+        <h1>Flappy Bird</h1>
+        <p class="lede">Tap, click, or press space to stay in the air. Dodge the pipes and chase your best score.</p>
+      </div>
+      <div class="stats">
+        <div>
+          <p class="label">Score</p>
+          <p class="score" id="score">0</p>
+        </div>
+        <div>
+          <p class="label">Best</p>
+          <p class="score" id="best">0</p>
+        </div>
+      </div>
+    </header>
+
+    <section class="game-card">
+      <canvas id="game" width="420" height="640" aria-label="Flappy Bird game" role="img"></canvas>
+      <div class="overlay" id="overlay">
+        <div class="panel">
+          <h2 id="overlayTitle">Tap to start</h2>
+          <p id="overlayHint">Space, click, or tap to flap.</p>
+          <button id="startBtn">Start Game</button>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <p>Tip: quick taps keep you steady, long gaps make steep dives.</p>
+      <button class="exitButton"><a href="../index.html" style="color: white;">Back to main menu</a></button>
+    </footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

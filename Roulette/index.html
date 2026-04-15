@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kuben Casino | Roulette</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <nav class="navbar">
+    <div class="brand">
+      <span class="brand-mark">Kuben</span>
+      <span class="brand-sub">Roulette Lounge</span>
+    </div>
+    <div class="nav-links">
+      <a href="../index.html">Main Menu</a>
+      <a href="#bets">Betting Table</a>
+      <a href="#rules">Rules</a>
+    </div>
+  </nav>
+
+  <main>
+    <section class="hero">
+      <div>
+        <p class="eyebrow">No real money. Just in-game points.</p>
+        <h1>Spin the wheel, stack your wins.</h1>
+        <p class="lede">Place multiple bets, build advanced combos, and watch the wheel decide your fate.</p>
+      </div>
+      <div class="balance-card">
+        <div>
+          <p class="label">Balance</p>
+          <p class="balance" id="balance">$0</p>
+        </div>
+        <div class="deposit">
+          <input id="depositAmount" type="number" min="1" value="500" />
+          <button id="depositBtn" class="btn primary">Deposit</button>
+        </div>
+        <div class="quick-deposit">
+          <button class="chip-btn" data-deposit="100">+100</button>
+          <button class="chip-btn" data-deposit="500">+500</button>
+          <button class="chip-btn" data-deposit="1000">+1000</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="game">
+      <div class="wheel-panel">
+        <div class="wheel-wrap">
+          <div class="wheel-glow"></div>
+          <div class="pointer"></div>
+          <div id="wheel" class="wheel"></div>
+        </div>
+        <div class="result" aria-live="polite">
+          <p class="label">Result</p>
+          <p id="resultDisplay">Place your bets to start.</p>
+        </div>
+        <div class="spin-actions">
+          <button id="spinBtn" class="btn primary">Spin</button>
+          <button id="clearBetsBtn" class="btn ghost">Clear Bets</button>
+          <button id="doubleBetsBtn" class="btn ghost">Double Bets</button>
+        </div>
+      </div>
+
+      <div class="control-panel">
+        <div class="chip-selector">
+          <p class="label">Choose Chip</p>
+          <div class="chip-row" id="chipRow"></div>
+        </div>
+
+        <div class="bet-slip">
+          <div class="bet-slip-header">
+            <p class="label">Bet Slip</p>
+            <p class="total" id="totalWager">$0 wagered</p>
+          </div>
+          <div id="betList" class="bet-list"></div>
+        </div>
+
+        <div class="advanced-bets" id="advanced">
+          <div class="advanced-header">
+            <p class="label">Advanced Bets</p>
+            <p class="hint">Pick numbers below to build combo bets.</p>
+          </div>
+          <div class="advanced-controls">
+            <select id="advancedType">
+              <option value="split">Split (2 numbers)</option>
+              <option value="street">Street (3 numbers)</option>
+              <option value="corner">Corner (4 numbers)</option>
+              <option value="line">Line (6 numbers)</option>
+            </select>
+            <button id="placeAdvancedBtn" class="btn primary">Place Advanced Bet</button>
+            <button id="clearAdvancedBtn" class="btn ghost">Clear Selection</button>
+          </div>
+          <div class="advanced-grid" id="advancedGrid"></div>
+          <p id="advancedStatus" class="status"></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="board-section" id="bets">
+      <div class="board-header">
+        <h2>Betting Table</h2>
+        <p>Click a number or outside bet to place chips from your selected stack.</p>
+      </div>
+      <div class="board">
+        <button id="zeroCell" class="bet-cell zero" data-bet-type="straight" data-number="0">0</button>
+        <div id="numberGrid" class="number-grid"></div>
+      </div>
+      <div class="outside-bets">
+        <button class="bet-btn" data-bet-type="range" data-range="low">1-18</button>
+        <button class="bet-btn" data-bet-type="parity" data-parity="even">Even</button>
+        <button class="bet-btn" data-bet-type="color" data-color="red">Red</button>
+        <button class="bet-btn" data-bet-type="color" data-color="black">Black</button>
+        <button class="bet-btn" data-bet-type="parity" data-parity="odd">Odd</button>
+        <button class="bet-btn" data-bet-type="range" data-range="high">19-36</button>
+      </div>
+      <div class="outside-bets secondary">
+        <button class="bet-btn" data-bet-type="dozen" data-dozen="1">1st 12</button>
+        <button class="bet-btn" data-bet-type="dozen" data-dozen="2">2nd 12</button>
+        <button class="bet-btn" data-bet-type="dozen" data-dozen="3">3rd 12</button>
+        <button class="bet-btn" data-bet-type="column" data-column="1">Column 1</button>
+        <button class="bet-btn" data-bet-type="column" data-column="2">Column 2</button>
+        <button class="bet-btn" data-bet-type="column" data-column="3">Column 3</button>
+      </div>
+    </section>
+
+    <section class="rules" id="rules">
+      <h2>Rules & Payouts</h2>
+      <div class="rules-grid">
+        <div class="rule-card">
+          <p class="label">Inside Bets</p>
+          <ul>
+            <li>Straight (1 number) pays 35:1</li>
+            <li>Split (2 numbers) pays 17:1</li>
+            <li>Street (3 numbers) pays 11:1</li>
+            <li>Corner (4 numbers) pays 8:1</li>
+            <li>Line (6 numbers) pays 5:1</li>
+          </ul>
+        </div>
+        <div class="rule-card">
+          <p class="label">Outside Bets</p>
+          <ul>
+            <li>Dozens & Columns pay 2:1</li>
+            <li>Red/Black, Even/Odd, 1-18/19-36 pay 1:1</li>
+            <li>Zero is green and loses for outside bets</li>
+          </ul>
+        </div>
+        <div class="rule-card">
+          <p class="label">House Tips</p>
+          <ul>
+            <li>You can place multiple bets per round.</li>
+            <li>Use the bet slip to remove bets before spinning.</li>
+            <li>Deposit adds in-game money only.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>Made for fun, not real money.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
