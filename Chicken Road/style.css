@@ -398,9 +398,9 @@ body::before {
 }
 
 .pill.active {
-    background: #ffd166;
+    background: #dda216;
     color: #3b2a00;
-    border-color: #cda03a;
+    border-color: #e8a60d;
 }
 
 .actions {
@@ -418,11 +418,11 @@ body::before {
     border-radius: 0.625vw;
     font-weight: 800;
     cursor: pointer;
-    box-shadow: 0 0.417vw 0.833vw rgba(0,0,0,0.25);
+    box-shadow: 0 0.417vw 0.833vw rgba(251, 116, 116, 0.382);
 }
 
 .cashout-btn {
-    background: #ffd166;
+    background: #d8ad0e;
     color: #3b2a00;
     padding: 0.926vh 0.938vw;
 }
@@ -434,7 +434,7 @@ body::before {
 }
 
 .go-btn {
-    background: #21c55d;
+    background: #1dcf5e;
     color: #0a2b13;
     padding: 0.926vh 0.938vw;
 }
@@ -445,7 +445,7 @@ body::before {
     gap: 0.417vw;
     padding: 0.417vw 0.521vw;
     border-radius: 0.833vw;
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(255, 255, 255, 0.184);
     border: 0.052vw solid rgba(255,255,255,0.08);
 }
 
@@ -465,7 +465,7 @@ body::before {
     display: flex;
     gap: 0.313vw;
 }
-
+ 
 .auto-chip {
     border: 0.052vw solid rgba(255,255,255,0.14);
     background: rgba(255,255,255,0.09);
@@ -529,8 +529,8 @@ body::before {
 
 .toast.success {
     background: rgba(34, 197, 94, 0.16);
-    border-color: rgba(34, 197, 94, 0.4);
-    color: #b7f0c8;
+    border-color: rgba(28, 200, 91, 0.4);
+    color: #b7c6f0;
 }
 
 .toast.fail {
